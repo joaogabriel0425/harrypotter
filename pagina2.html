@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="iconteste.ico" type="image/x-icon">
+    <title>Harry Potter 2</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <img id="logo" src="image/logo_harry.png" alt="logo">
+    <div id="potter2">
+       
+        <h1>GOSTARIA DE SABER SE PODEMOS CONVERSAR?</h1>
+        <p>(se quiser assistir harry potter também, não acharia ruim não kk)</p>
+        
+        <div class="box">
+            <button class="escape"><a href="https://wa.me/5579999957880?text=" target="_blank">Sim</a></button>
+            <button class="escape" id="btn-escape">Não</button>
+        </div>
+
+        <div id="iconyt"><a href="https://youtu.be/mL2Evq3ge5A?si=2t0iRa9V9rDn0O8J" target="_blank"> <img src="image/video.png" alt="youtube"></a></div>
+        <h3>clique no botão do YouTube antes de ler as frases..</h3>
+
+        <div class="carousel-container">
+        
+            <div class="carousel-track">
+                
+                <div class="card">
+                    <img src="image/foto1.jpeg" alt="Descrição da Foto 1">
+                    <div class="card-title">
+                                Desculpe <br>
+                                Estou um pouco atrasado <br>
+                                Mas espero que ainda dê tempo <br>
+                                De dizer que andei errado, <br>
+                                E eu entendo !
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="image/foto2.jpeg" alt="Descrição da Foto 2">
+                    <div class="card-title">
+                                    As suas queixas tão justificáveis <br>
+                                    E a falta que eu fiz nessa semana
+                                    Coisas que pareceriam óbvias
+                                    Até pra uma criança
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="image/foto3.jpeg" alt="Descrição da Foto 3">
+                    <div class="card-title">Por onde andei
+                                    Enquanto você me procurava <br>
+                                    E o que eu te dei <br>
+                                    Foi muito pouco ou quase nada
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="image/foto4.jpeg" alt="Descrição da Foto 4">
+                    <div class="card-title">E o que eu deixei
+                                Algumas roupas penduradas <br>
+                                Será que eu sei <br>
+                                Que você é mesmo
+                                Tudo aquilo que me faltava
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="image/foto5.jpeg" alt="Descrição da Foto 5">
+                    <div class="card-title">Amor, eu sinto a sua falta <br>
+                                E a falta é a morte da esperança <br>
+                                Como um dia que roubaram o seu carro <br>
+                                Deixou uma lembrança
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="image/foto6.png" alt="Descrição da Foto 6">
+                    <div class="card-title">Que a vida é mesmo
+                                    Coisa muito frágil
+                                    Uma bobagem, uma irrelevância
+                                    Diante da eternidade <br>
+                                    Do amor de quem se ama
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="image/foto7.jpeg" alt="Descrição da Foto 7">
+                    <div class="card-title">Por onde andei
+                                    Enquanto você me procurava
+                                    E o que eu te dei
+                                    Foi muito pouco ou quase nada
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="image/foto8.jpeg" alt="Descrição da Foto 8">
+                    <div class="card-title">E o que eu deixei
+                                Algumas roupas penduradas
+                                Será que eu sei
+                                Que você é mesmo
+                                Aquilo tudo que me faltava?
+                    </div>
+                </div>
+
+            </div>
+            <button id="prevBtn" class="nav-btn prev">&#10094;</button>
+            <button id="nextBtn" class="nav-btn next">&#10095;</button>
+
+        </div>
+    </div>
+    <script>
+    // --- CÓDIGO PARA O BOTÃO FUGITIVO (Sem alterações) ---
+    const btnEscape = document.getElementById('btn-escape');
+    const container = document.getElementById('potter2');
+    
+    btnEscape.addEventListener('mouseover', fugir);
+
+    function fugir() {
+        btnEscape.style.position = 'absolute';
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+        const buttonWidth = btnEscape.offsetWidth;
+        const buttonHeight = btnEscape.offsetHeight;
+        const maxX = containerWidth - buttonWidth;
+        const maxY = containerHeight - buttonHeight;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        btnEscape.style.left = newX + 'px';
+        btnEscape.style.top = newY + 'px';
+    }
+
+    // ==========================================================
+    // ==     CÓDIGO PARA O CARROSSEL (LOOP SUAVE E CONTÍNUO)  ==
+    // ==========================================================
+    const track = document.querySelector('.carousel-track');
+    let cards = Array.from(track.children);
+    const nextButton = document.querySelector('#nextBtn');
+    const prevButton = document.querySelector('#prevBtn');
+
+    // --- O TRUQUE COMEÇA AQUI ---
+
+    // 1. Clonamos os itens para criar o efeito infinito
+    const clonesCount = 4; // Quantidade de clones em cada ponta. 4 é um bom número.
+    
+    // Clona os primeiros 'clonesCount' cards e adiciona no final
+    for (let i = 0; i < clonesCount; i++) {
+        const clone = cards[i].cloneNode(true);
+        clone.classList.add('clone');
+        track.appendChild(clone);
+    }
+
+    // Clona os últimos 'clonesCount' cards e adiciona no início
+    for (let i = cards.length - 1; i >= cards.length - clonesCount; i--) {
+        const clone = cards[i].cloneNode(true);
+        clone.classList.add('clone');
+        track.insertBefore(clone, track.firstChild);
+    }
+    
+    // Atualiza a lista de cards para incluir os clones
+    const allCards = Array.from(track.children);
+    const cardWidthWithGap = cards[0].getBoundingClientRect().width + 20;
+
+    // 2. Posição inicial
+    // Começamos o carrossel nos primeiros cards *originais*, pulando os clones do início.
+    let currentIndex = clonesCount;
+    track.style.transform = `translateX(${-currentIndex * cardWidthWithGap}px)`;
+
+    
+    // --- LÓGICA DOS BOTÕES ---
+
+    nextButton.addEventListener('click', () => {
+        // Apenas avança o índice
+        currentIndex++;
+        
+        // Aplica a animação
+        track.style.transition = 'transform 0.5s ease-in-out';
+        track.style.transform = `translateX(${-currentIndex * cardWidthWithGap}px)`;
+    });
+
+    prevButton.addEventListener('click', () => {
+        // Apenas volta o índice
+        currentIndex--;
+
+        // Aplica a animação
+        track.style.transition = 'transform 0.5s ease-in-out';
+        track.style.transform = `translateX(${-currentIndex * cardWidthWithGap}px)`;
+    });
+
+    // 3. O "teletransporte" mágico
+    // O evento 'transitionend' é acionado quando a animação de slide TERMINA.
+    track.addEventListener('transitionend', () => {
+        // Se chegamos nos clones do FINAL...
+        if (currentIndex >= cards.length + clonesCount) {
+            // ...silenciosamente, pulamos de volta para os cards originais do início.
+            currentIndex = clonesCount;
+            track.style.transition = 'none'; // Remove a animação para o salto ser invisível
+            track.style.transform = `translateX(${-currentIndex * cardWidthWithGap}px)`;
+        }
+
+        // Se chegamos nos clones do INÍCIO...
+        if (currentIndex < clonesCount) {
+            // ...silenciosamente, pulamos de volta para os cards originais do final.
+            currentIndex = cards.length + clonesCount - 1;
+            track.style.transition = 'none'; // Remove a animação
+            track.style.transform = `translateX(${-currentIndex * cardWidthWithGap}px)`;
+        }
+    });
+
+</script>
+    </body>
+</html>

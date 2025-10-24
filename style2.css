@@ -1,0 +1,239 @@
+/* style2.css - CORRIGIDO E RESPONSIVO */
+
+/* ============================================= */
+/* ==        ESTILOS GERAIS DA PÁGINA         == */
+/* ============================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url(image/horizons_village.png) bottom center / contain no-repeat,  
+                url(image/fundo_harry.jpg) center center / cover no-repeat;    
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;    
+    overflow-x: hidden; /* Impede a rolagem horizontal */
+}
+
+
+#logo{
+    width: 300px;
+    max-width: 80%; /* Garante que o logo não seja maior que a tela */
+    display: block;
+    margin: 0 auto;
+    
+}
+
+#iconyt img{
+    width: 60px;
+    margin-top: 10px;
+}
+
+
+h3{
+    font-size: 11px;
+    margin-top: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#potter2 {
+    position: relative;
+    
+    /* --- MUDANÇA IMPORTANTE --- */
+    min-height: 100vh; /* Em vez de 'height: 100vh'. Permite que o conteúdo cresça */
+    /* -------------------------- */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha o conteúdo no topo */
+    padding-top: 60px; /* Adiciona um espaço no topo */
+    align-items: center;
+    text-align: center;
+    width: 90%; /* Largura principal (Isso já estava ótimo!) */
+    max-width: 1200px; /* Largura máxima (Isso já estava ótimo!) */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+#potter2 h1 {
+    font-family: 'Wizardp';
+    margin-top: -10px;
+}
+
+#potter2 p {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+#potter2 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.box {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.escape {
+    background-color: #ffffff00;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 20px;
+    width: 100px;
+    padding: 10px;
+    font-family: 'Wizardp';
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.escape:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================= */
+/* ==     ESTILOS DO CARROSSEL DE FOTOS       == */
+/* ============================================= */
+
+.carousel-title {
+    font-family: 'Wizardp';
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-top: 60px;     /* Espaço entre os botões e o título do carrossel */
+    margin-bottom: 20px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;     /* Esconde os cards que saem da tela */
+    padding: 20px 0;
+}
+
+.carousel-track {
+    display: flex;        /* Coloca os cards lado a lado */
+    gap: 20px;            /* Espaço entre os cards */
+    transition: transform 0.5s ease-in-out; /* Animação suave de deslize */
+    
+    /* Adicionei isso para garantir que o track comece alinhado */
+    padding-left: 10px; 
+}
+
+.card {
+    min-width: 220px;     /* Largura mínima de cada card */
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid #555;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    height: 450px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+    box-shadow: 0 0 20px rgba(255, 219, 74, 0.6);
+}
+
+.card img {
+    width: 100%;
+    height: 270px;        /* Altura fixa para todas as imagens */
+    object-fit: cover;    /* Faz a imagem preencher o espaço sem distorcer */
+    display: block;
+}
+
+.card-title {
+    padding: 15px;
+    font-family: 'Wizardp';
+    margin-bottom: 25px;
+    font-size: 15px; /* Ajustei o tamanho para caber melhor */
+}
+
+.nav-btn {
+    position: absolute;
+    top: 55%; /* Centraliza verticalmente em relação aos cards */
+    transform: translateY(-50%);
+    background-color: #ffffff00;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, left 0.3s, right 0.3s; /* Adiciona transição */
+}
+
+.nav-btn:hover {
+    background-color: #cccccc4a
+}
+
+.prev {
+    left: -20px; /* Posição padrão (desktop) */
+}
+
+.next {
+    right: -20px; /* Posição padrão (desktop) */
+}
+
+
+/* --- MÍDIA QUERY PARA CELULARES --- */
+@media (max-width: 768px) {
+    
+    /* Remove o 'fixed' APENAS em telas pequenas */
+    body {
+        background-attachment: scroll, scroll;
+    }
+
+    #potter2 h1 {
+        font-size: 22px; /* Reduz a fonte no mobile */
+    }
+
+    /* --- MUDANÇA DAS SETAS NO MOBILE --- */
+    /* Traz as setas para DENTRO do container em telas pequenas */
+    .prev {
+        left: 5px; 
+    }
+
+    .next {
+        right: 5px;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        background-color: #0000004a; /* Adiciona um leve fundo para ver no mobile */
+    }
+
+    .card {
+        height: 420px; /* Reduz um pouco a altura do card no mobile */
+    }
+
+    .card-title {
+        font-size: 14px; /* Reduz a fonte do card */
+        padding: 10px;
+    }
+}
+
+
+/* Fontes (Sem alteração) */
+@font-face {
+    font-family: "harryp";
+    src: url(fonts/HARRYP__.TTF)format(truetype);
+}
+
+@font-face {
+    font-family: "wizardp";
+    src: url(fonts/WizardWorldSimplified.ttf)format(truetype);
+}

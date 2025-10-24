@@ -1,0 +1,109 @@
+/* style.css - CORRIGIDO E RESPONSIVO */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+   background: url(image/horizons_village.png) bottom center / contain no-repeat,  
+               url(image/fundo_harry.jpg) center center / cover no-repeat;    
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;  
+}
+
+#logo{
+    width: 300px;
+    max-width: 80%; /* Garante que o logo não seja maior que a tela no mobile */
+    margin: 0 auto ;
+    margin-top: 60px; /* Reduzi um pouco a margem para mobile */
+    margin-bottom: 30px;
+    display: block;
+}
+
+#potter{
+    /* --- ESTA É A MUDANÇA PRINCIPAL --- */
+    max-width: 900px; /* Ele terá NO MÁXIMO 900px */
+    width: 90%;       /* Mas em telas menores, ele ocupará 90% da largura */
+    /* ---------------------------------- */
+
+    margin: 0 auto ;
+}
+
+#potter h1{
+    font-family: 'harryp', serif;
+    font-size: 55px;
+    text-align: center;
+    color: #ffffff;
+}
+
+#potter h2{
+    font-family: 'wizardp';
+    font-size: 22px;
+    text-align: center;
+}
+
+#potter h3{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 60px;
+}
+
+#potter button{
+    width: 100%;
+    background-color: #ffffff00;
+    border: 2px solid #fff;    
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+#potter button:hover{
+    background-color: #ffffff3b;
+    
+}
+
+#potter a{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'wizardp';
+    font-size: 18px;
+}
+
+#potter p{
+    text-align: center;
+    margin-top: 30px;
+    font-family: 'wizardp'
+}
+
+
+/* --- MÍDIA QUERY PARA CELULARES --- */
+@media (max-width: 768px) {
+    
+    /* O 'background-attachment: fixed' funciona muito mal em celulares (iOS principalmente) */
+    /* Isso remove o 'fixed' APENAS em telas pequenas, melhorando a performance */
+    body {
+        background-attachment: scroll, scroll;
+    }
+
+    #potter h1 {
+        font-size: 45px; /* Reduz um pouco a fonte no mobile */
+    }
+
+    #potter h2 {
+        font-size: 18px; /* Reduz um pouco a fonte no mobile */
+    }
+}
+
+
+/* Fontes (Sem alteração) */
+@font-face {
+    font-family: "harryp";
+    src: url(fonts/HARRYP__.TTF)format(truetype);
+}
+
+@font-face {
+    font-family: "wizardp";
+    src: url(fonts/WizardWorldSimplified.ttf)format(truetype);
+}
